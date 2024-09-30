@@ -1,0 +1,205 @@
+ex01
+
+SOURCE CODE:   1. APPLICATION ABOUT ANDROID LAYOUTS
+
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#FFF59D"
+tools:context="com.example.android.myapplication.MainActivity">
+<!--Light Yellow Color-->
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:id="@+id/l1"
+android:background="#FF9E80">
+<!--Light Pink Color-->
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="PROGRAMMING IN"
+android:textAllCaps="true"
+android:textSize="40dp"
+android:textColor="#F44336"/>
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Android"
+android:textAllCaps="true"
+android:textSize="40dp"
+android:textColor="#F44336"/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_below="@id/l1"
+android:background="#039BE5"
+android:id="@+id/l2">
+<!--Light Blue Color-->
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="PROGRAMMING IN"
+android:textAllCaps="true"
+android:textSize="30dp"
+android:textColor="#76FF03"
+/>
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Android"
+android:textAllCaps="true"
+android:textSize="30dp"
+android:textColor="#76FF03"
+/>
+</LinearLayout>
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/l2"
+android:background="#7E57C2"
+>
+<!--Light Purple Color-->
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button 1"
+android:id="@+id/b1"
+/>
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button 2"
+android:layout_toRightOf="@id/b1"
+android:id="@+id/b2"
+/>
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button 3"
+android:layout_below="@id/b1"
+android:id="@+id/b3"
+/>
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button 4"
+android:layout_below="@id/b2"
+android:layout_toRightOf="@id/b3"
+/>
+</RelativeLayout>
+</RelativeLayout> 
+
+MainActivity.java
+package com.example.application2; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; public class 
+MainActivity extends AppCompatActivity { @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); } }
+
+
+
+
+ex02
+SOURCE CODE: 2. APPLICATION ABOUT INTENT
+
+activity_a.xml:
+<?xml version="1.0" encoding="utf-8"?> <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".First_Activity"> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:text="Intent program in Android" android:layout_marginTop="80dp" android:textColor="#bb2233" android:textSize="30dp" android:layout_centerHorizontal="true" /> <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Explicit Intent" android:id="@+id/explicit_Intent" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:layout_marginTop="147dp" /> </RelativeLayout>
+
+activity_b.xml
+<?xml version="1.0" encoding="utf-8"?> <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".Second_Activity"> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="This is Second Activity" android:id="@+id/textView" android:textSize="35dp" android:textColor="#1155bb" android:layout_centerVertical="true" android:layout_centerHorizontal="true" /> </RelativeLayout>
+
+FirstActivity.java
+package com.example.application3; import androidx.appcompat.app.AppCompatActivity; import android.content.Intent; import android.os.Bundle; import android.view.View; import android.widget.Button; public class First_Activity extends AppCompatActivity { Button exp_btn; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_a);
+exp_btn = (Button)findViewById(R.id.explicit_Intent); exp_btn.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { Intent intent = new Intent(getBaseContext(),Second_Activity.class); startActivity(intent); } } );} }
+
+SecondActivity.java
+package com.example.application3; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.widget.Toast; public class Second_Activity extends AppCompatActivity { @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_b); Toast.makeText(getApplicationContext(),"Welcome to Second Activity",Toast.LENGTH_LONG).show(); } }
+
+
+
+ex03
+SOURCE CODE: 3. APPLICATION ABOUT USER INTERFACE
+activity_a.xml: 
+<?xml version="1.0" encoding="utf-8"?> <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".ActivityA"> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_centerInParent="false" android:layout_centerHorizontal="true" android:layout_marginTop="40dp" android:text="Login Form" android:textAppearance="@style/TextAppearance.AppCompat.Large" app:layout_constraintBottom_toTopOf="@+id/uname" app:layout_constraintHorizontal_bias="0.498" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.036" /> <EditText android:id="@+id/uname" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60dp" android:ems="10" android:inputType="textPersonName" android:hint="User Name" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.3" /> <EditText android:id="@+id/pass" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60dp" android:ems="10" android:inputType="textPersonName" android:hint="password" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/uname" app:layout_constraintVertical_bias="0.0" /> <Button android:id="@+id/button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Submit" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pass" app:layout_constraintVertical_bias="0.214" /> </androidx.constraintlayout.widget.ConstraintLayout>
+
+ActivityA.java:  
+package com.example.userinterface; import androidx.appcompat.app.AppCompatActivity; import android.content.Intent; import android.os.Bundle; import android.view.View; import android.widget.Button; import android.widget.EditText; import android.widget.Toast; public class ActivityA extends AppCompatActivity { EditText user; EditText pass; Button submit; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_a); user = (EditText)findViewById(R.id.uname); pass = (EditText)findViewById(R.id.pass); submit = (Button)findViewById(R.id.button); submit.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { validate(user.getText().toString(),pass.getText().toString()); } }); } public void validate(String user, String pass) { if(user.equals("Jairam") && pass.equals("1234") ) { Intent intent = new Intent(ActivityA.this,ActivityB.class); intent.putExtra("name",user); startActivity(intent); } else { Toast.makeText(getBaseContext(), "Wrong Username & Password", Toast.LENGTH_SHORT).show(); } } }
+
+
+activity_b.xml:
+<?xml version="1.0" encoding="utf-8"?> <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".Second_Activity"> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40dp" android:id="@+id/txt2" android:text="Welcome," android:textSize="30dp" android:textColor="#112233" /> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="80dp" android:layout_centerHorizontal="true" android:id="@+id/txt1" android:textSize="40dp" android:textColor="#112233" /> </RelativeLayout>
+
+ActivityB.java 
+package com.example.userinterface; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.widget.TextView; public class ActivityB extends AppCompatActivity { TextView text1; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_b); text1 = (TextView) findViewById(R.id.txt1); Bundle bundle= getIntent().getExtras(); String data = bundle.getString("name"); text1.setText(data); } }
+
+
+ex04
+SOURCE CODE: 4. APPLICATION ABOUT ANIMATION
+
+blink.xml 
+<?xml version="1.0" encoding="utf-8"?> <set xmlns:android="http://schemas.android.com/apk/res/android"> <alpha android:fromAlpha="0.0" android:toAlpha="1.0" android:interpolator="@android:anim/accelerate_interpolator" android:duration="600" android:repeatMode="reverse" android:repeatCount="infinite"/> </set>
+
+clockwise.xml 
+<?xml version="1.0" encoding="utf-8"?> <set xmlns:android="http://schemas.android.com/apk/res/android"> <rotate xmlns:android="http://schemas.android.com/apk/res/android" android:fromDegrees="0" android:toDegrees="360" android:pivotX="50%" android:pivotY="50%" android:duration="5000" > </rotate> <rotate xmlns:android="http://schemas.android.com/apk/res/android" android:startOffset="5000" android:fromDegrees="360" android:toDegrees="0" android:pivotX="50%" android:pivotY="50%" android:duration="5000" > </rotate> </set>
+
+move.xml 
+<?xml version="1.0" encoding="utf-8"?> <set xmlns:android="http://schemas.android.com/apk/res/android" android:interpolator="@android:anim/linear_interpolator" android:fillAfter="true"> <translate android:fromXDelta="0%p"
+android:toXDelta="75%p" android:duration="800" /> </set>
+
+activity_main.xml 
+<?xml version="1.0" encoding="utf-8"?> <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity"> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello World!" android:id="@+id/text" android:textSize="35dp" android:textColor="#112255" android:layout_centerHorizontal="true" android:layout_marginTop="50dp"/> <Button android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/text" android:layout_alignParentStart="true" android:layout_alignParentLeft="true" android:layout_marginStart="73dp" android:layout_marginLeft="73dp" android:layout_marginTop="122dp" android:layout_marginEnd="50dp" android:layout_marginRight="50dp" android:layout_marginBottom="50dp" android:onClick="move" android:text="Move" /> <Button android:id="@+id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/text" android:layout_alignParentStart="true" android:layout_alignParentLeft="true" android:layout_marginStart="214dp" android:layout_marginLeft="214dp" android:layout_marginTop="117dp" android:layout_toRightOf="@+id/button1" android:onClick="clockwise" android:text="clockwise" /> <Button
+android:id="@+id/button3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/button1" android:layout_alignParentStart="true" android:layout_alignParentLeft="true" android:layout_marginStart="145dp" android:layout_marginLeft="145dp" android:layout_marginTop="25dp" android:onClick="blink" android:text="blink" /> </RelativeLayout>
+
+MainActivity.java 
+package com.example.animationproject; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.view.View; import android.view.animation.Animation; import android.view.animation.AnimationUtils; import android.widget.TextView; public class MainActivity extends AppCompatActivity { TextView txt; Animation clockwise; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); } public void clockwise(View view) { TextView txt = (TextView)findViewById(R.id.text); Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.clockwise); txt.startAnimation(animation); } public void blink(View view) { TextView txt = (TextView)findViewById(R.id.text); Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink); txt.startAnimation(animation); } public void move(View view) { TextView txt = (TextView)findViewById(R.id.text); Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move); txt.startAnimation(animation); } }
+
+
+ex05
+SOURCE CODE: 5. CALCULATOR APP IN ANDROID
+
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?> <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity"> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CALCULATOR" android:textColor="#E91E63" android:textSize="40dp" android:layout_marginTop="50dp"
+android:layout_centerHorizontal="true" /> <EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="First Number" android:id="@+id/ET1" android:layout_marginTop="200dp" android:layout_centerHorizontal="true"/> <EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Second Number" android:id="@+id/ET2" android:layout_marginTop="250dp" android:layout_centerHorizontal="true"/> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Result" android:id="@+id/result" android:textColor="#E91E63" android:textSize="40dp" android:layout_marginTop="400dp" android:layout_centerHorizontal="true" /> <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:id="@+id/add" android:textSize="30dp" android:layout_marginTop="500dp" android:layout_marginLeft="20dp" android:onClick="addition" /> <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:id="@+id/sub" android:textSize="30dp" android:layout_marginTop="500dp" android:layout_marginLeft="150dp" android:onClick="subtraction" /> <Button android:layout_width="wrap_content"
+android:layout_height="wrap_content" android:text="*" android:id="@+id/mul" android:textSize="30dp" android:layout_marginTop="500dp" android:layout_marginLeft="270dp" android:onClick="multiplication" /> <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="/" android:id="@+id/div" android:textSize="30dp" android:layout_marginTop="580dp" android:layout_marginLeft="20dp" android:onClick="division" /> <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="POW" android:id="@+id/pow" android:textSize="25dp" android:layout_marginTop="580dp" android:layout_marginLeft="150dp" android:onClick="power" /> <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOD" android:id="@+id/mod" android:textSize="25dp" android:layout_marginTop="580dp" android:layout_marginLeft="270dp" android:onClick="mod" /> </RelativeLayout>
+
+MainActivity.java
+package com.example.calculatorproject; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
+import android.view.View; import android.widget.EditText; import android.widget.TextView; public class MainActivity extends AppCompatActivity { EditText e1,e2; TextView t1; double val1, val2; String s1,s2; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); } public boolean getNumber() { e1 = (EditText)findViewById(R.id.ET1); e2 = (EditText)findViewById(R.id.ET2); t1 = (TextView)findViewById(R.id.Result); s1 = e1.getText().toString(); s2 = e2.getText().toString(); if(s1.equals(null) && s2.equals(null)) { String result = "Please enter a value"; t1.setText(result); return false; } else { val1 = Double.parseDouble(e1.getText().toString()); val2 = Double.parseDouble(e2.getText().toString()); } return true; } public void addtion(View v) { if(getNumber()) { double sum = val1 + val2; t1.setText(Double.toString(sum)); } } public void subtraction(View v)
+{ if(getNumber()) { double sum = val1 - val2; t1.setText(Double.toString(sum)); } } public void multiplication(View v) { if(getNumber()) { double sum = val1 * val2; t1.setText(Double.toString(sum)); } } public void division(View v) { if(getNumber()) { double sum = val1 / val2; t1.setText(Double.toString(sum)); } } public void power(View v) { if(getNumber()) { double sum = Math.pow(val1,val2); t1.setText(Double.toString(sum)); } } public void mod(View v) { if(getNumber()) { double sum = val1 % val2; t1.setText(Double.toString(sum)); } } }
+
+ex06
+SOURCE CODE: 6. SIMPLE ANDROID CAMERA APPLICATION
+
+activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?> <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity"> <ImageView android:id="@+id/imageView" android:layout_width="206dp" android:layout_height="307dp" android:layout_marginStart="113dp" android:layout_marginLeft="113dp" android:layout_marginTop="119dp" android:layout_marginEnd="92dp"
+android:layout_marginRight="92dp" android:layout_marginBottom="305dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:srcCompat="@mipmap/ic_launcher" /> <Button android:id="@+id/button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="173dp" android:layout_marginLeft="173dp" android:layout_marginTop="116dp" android:layout_marginEnd="151dp" android:layout_marginRight="151dp" android:layout_marginBottom="141dp" android:onClick="takePicture" android:text="Button" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/imageView" /> </androidx.constraintlayout.widget.ConstraintLayout>
+
+MainActivity.java
+package com.example.cameraapplication; import androidx.appcompat.app.AppCompatActivity; import android.content.Intent; import android.graphics.Bitmap; import android.os.Bundle; import android.provider.MediaStore; import android.view.View; import android.widget.ImageView; public class MainActivity extends AppCompatActivity { private ImageView imgview; private static final int REQUEST_IMAGE_CAPTURE =101; @Override protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); imgview = (ImageView)findViewById(R.id.imageView); } public void takePicture(View view) { Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); startActivity(intent); } }
+
+ex07
+SOURCE CODE: 7. BASIC LIST VIEW DEMO IN ANDROID
+
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?> <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity"> <ListView android:id="@+id/list" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#E3E9F3" /> </RelativeLayout>
+
+MainActivity.java
+package com.example.listviewproject; import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle; import android.view.View; import android.widget.AdapterView; import android.widget.ArrayAdapter; import android.widget.ListView; import android.widget.Toast; public class MainActivity extends AppCompatActivity { ListView ls; String[] month ={"January","February","March","April","May","June","July","August","September","October","November","December"}; @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); ls = (ListView)findViewById(R.id.list); ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,month); ls.setAdapter(arrayAdapter); ls.setOnItemClickListener(new AdapterView.OnItemClickListener() { @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) { TextView tx = (TextView)view; Toast.makeText(MainActivity.this,"Item Selected "+tx.getText(),Toast.LENGTH_SHORT).show();
+} }); } }
+
+ex08
+SOURCE CODE:  8. SIMPLE GOOGLE MAP APPLICATION IN ANDROID
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?> <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity"> <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Click below button to open Google Map" android:textSize="30dp" android:layout_marginTop="100dp" android:textColor="@color/black" /> <Button android:layout_width="wrap_content"
+android:layout_height="wrap_content" android:layout_marginTop="300dp" android:layout_centerHorizontal="true" android:text="Google Map" android:textSize="30dp" android:onClick="process" /> </RelativeLayout>
+
+MainActivity.java
+package com.example.myapplication; import androidx.appcompat.app.AppCompatActivity; import android.content.Intent; import android.net.Uri; import android.os.Bundle; import android.view.View; public class MainActivity extends AppCompatActivity { @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); } public void process(View view) { Intent intent = new Intent(Intent.ACTION_VIEW); intent.setData(Uri.parse("geo:13.75.986830")); startActivity(intent); } }

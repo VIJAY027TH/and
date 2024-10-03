@@ -1,0 +1,64 @@
+EXERCISE_06(CAMERA) Project Name =  test_six
+
+activity_main.xml 
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.test_six.MainActivity">
+
+    <ImageView
+
+        android:layout_width="206dp"
+        android:layout_height="307dp"
+        android:id="@+id/imageview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@mipmap/ic_launcher"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="takepicture"
+        android:text="Take Picture"
+        app:layout_constraintTop_toBottomOf="@id/imageview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+MainActivity.java (project name=    test_six)
+
+package com.example.test_six;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageView;
+
+
+public class MainActivity extends AppCompatActivity {
+    private ImageView imageView;
+    private static final int REQUEST_IMAGE_CAPTURE = 101;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        imageView = (ImageView) findViewById(R.id.imageview);
+    }
+    public void takepicture(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivity(intent);
+    }
+}

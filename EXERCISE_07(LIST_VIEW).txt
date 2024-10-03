@@ -1,0 +1,44 @@
+MainActivity.java 
+package com.example.seven;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity { ListView ls; String[] month ={"January","February","March","April","May","June","July","August","September","October","November","December"}; @Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    ls = (ListView)findViewById(R.id.list);
+    ArrayAdapter<String> arrayAdapter = new
+            ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,month);
+    ls.setAdapter(arrayAdapter);
+    ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            TextView tx = (TextView)view;
+            Toast.makeText(MainActivity.this,"Item Selected "+tx.getText(),Toast.LENGTH_SHORT).show();
+        }
+    });
+}
+}
+
+
+activity_main.xml 
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E3E9F3" />
+</RelativeLayout>

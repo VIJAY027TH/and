@@ -1,0 +1,169 @@
+EXERCISE_05 (CALC)
+
+MainActivity.java
+
+package com.example.calc;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText e1,e2,Result;
+    TextView t1;
+    double val1, val2;
+    String s1,s2;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); }
+    public boolean getNumber() {
+        e1 = (EditText)findViewById(R.id.ET1);
+        e2 = (EditText)findViewById(R.id.ET2);
+        t1 = (TextView)findViewById(R.id.result);
+        s1 = e1.getText().toString();
+        s2 = e2.getText().toString();
+        if(s1.equals(null) && s2.equals(null)) {
+            String result = "Please enter a value";
+            t1.setText(result);
+            return false; }
+        else { val1 = Double.parseDouble(e1.getText().toString());
+            val2 = Double.parseDouble(e2.getText().toString()); }
+        return true; }
+    public void addtion(View v) {
+        if(getNumber()) {
+            double sum = val1 + val2;
+            t1.setText(Double.toString(sum));
+        }
+    }
+    public void subtraction(View v){
+        if(getNumber()) {
+            double sum = val1 - val2;
+            t1.setText(Double.toString(sum));
+        }
+    }
+    public void multiplication(View v) {
+        if(getNumber()) {
+            double sum = val1 * val2;
+            t1.setText(Double.toString(sum));
+        }
+    }
+    public void division(View v) {
+        if(getNumber()) {
+            double sum = val1 / val2;
+            t1.setText(Double.toString(sum));
+        } }
+    public void power(View v) {
+        if(getNumber()) {
+            double sum = Math.pow(val1,val2);
+            t1.setText(Double.toString(sum));
+        }
+    }
+    public void mod(View v) {
+        if(getNumber()) {
+            double sum = val1 % val2;
+            t1.setText(Double.toString(sum));
+        }
+    }
+}
+
+
+activity_main.java
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.calc.MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CALCULATOR"
+        android:textColor="#E91E63"
+        android:textSize="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="First Number"
+        android:id="@+id/ET1"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/ET2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:hint="Second Number"
+        android:textColorHint="#546E7A" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:id="@+id/result"
+        android:textColor="#E91E63"
+        android:textSize="40dp"
+        android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/add"
+        android:textSize="30dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="addition" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/sub"
+        android:textSize="30dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="150dp"
+        android:onClick="subtraction" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:id="@+id/mul"
+        android:textSize="30dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="270dp"
+        android:onClick="multiplication" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:id="@+id/div"
+        android:textSize="30dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="division" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POW"
+        android:id="@+id/pow"
+        android:textSize="25dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginLeft="150dp"
+        android:onClick="power" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MOD"
+        android:id="@+id/mod"
+        android:textSize="25dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginLeft="270dp"
+        android:onClick="mod" />
+</RelativeLayout>
